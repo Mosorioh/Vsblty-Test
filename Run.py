@@ -25,9 +25,16 @@ from itertools import groupby
 from reportlab.pdfgen import canvas
 from reportlab.platypus import PageBreak
 
+
+
+#///////////////////////////////////////////
+# Generamos Un GUID 
+#///////////////////////////////////////////
+IdUnico = uuid.uuid4()
+GuidTest = str(IdUnico)
+
 PathLogs = "C:/ProgramData/Vsblty/KingSalmon/"
 #PathLogs = "C:/Users/Mijail/Desktop/Los VM/KingSalmon-vm-1/KingSalmon/"
-GuidTest = "5214-8963231-254-2836"
 
 ################################################################################################
 #/////////////////////////////////////////////////////////////////////////////////////////////// 
@@ -36,6 +43,7 @@ GuidTest = "5214-8963231-254-2836"
 
 from FaceDetectionLog import FaceDetectionLog
 FaceDetectionService = FaceDetectionLog (PathLogs, GuidTest)
+FaceDetectionService.reverse()
 
 print ("*******************************************************************")
 print ("///////////////////////////////////////////////////////////////////") 
@@ -54,6 +62,16 @@ for Element in FaceDetectionService:
     print ("Took: ",FaceDetectionService[i][5])
     print ("Log: ",FaceDetectionService[i][6])
     print("")
+    
+    from AddFaceDetection import addFaceDetectionServiceLog
+    addFaceDetectionServiceLog (
+        FaceDetectionService[i][0], 
+        FaceDetectionService[i][1], 
+        FaceDetectionService[i][2],
+        FaceDetectionService[i][3],
+        FaceDetectionService[i][4],
+        FaceDetectionService[i][5],
+        FaceDetectionService[i][6])
 
     TotalTook.append(FaceDetectionService[i][5])
     i += 1
@@ -188,6 +206,28 @@ print ("Maximo Face-Detection-Service ", max(TotalTook))
 print ("Maximo Engagement-ServiceLog  ", max(TotalTookEngagement))
 print ("Maximo Complete analysis      ", max(TotalTookCompleteAnalysis))
 print ("Maximo PersonIdClientService  ", max(TotalTookPersonIdService))
-#print ("Maximo Face-Analysis          ", max(TotalTookFaceAnalysis))
+print ("Maximo Face-Analysis          ", max(TotalTookFaceAnalysis))
 print ("///////////////////////////////////////////////////////////////////")
 print ("*******************************************************************")
+
+
+################################################################################################
+#/////////////////////////////////////////////////////////////////////////////////////////////// 
+#/////////////////////////////////////////////////////////////////////////////////////////////// 
+################################################################################################
+from getFacedetection import GetFaceDetectionService
+GetFaceDetectionService = GetFaceDetectionService (GuidTest)
+
+FilePdfName =  GuidTest + ".pdf"
+
+doc = canvas.Canvas(FilePdfName)
+
+doc.setTitle("Test")
+doc.setFont("Helvetica", 10)
+doc.drawString(270, 785, "Test Summary")
+
+
+
+
+doc.line(20,730,580,730) #Creación de una linea recta
+doc.line(20,725,580,725) #Creación de una linea recta

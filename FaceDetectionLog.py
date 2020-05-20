@@ -19,6 +19,7 @@ def FaceDetectionLog (PathLogs, GuidTest):
 
     # Obtenemos todos los Archivos que estan dentro del directorio KingSalmon
     dirs = os.listdir(PathLogs)
+    
 
     # Por cada Archivo leemos y buscamos el parametro
     for file in dirs:
@@ -60,14 +61,14 @@ def FaceDetectionLog (PathLogs, GuidTest):
                 # tomamos el tiempo de la funcion Took ya convertido
                 TookTime = date_time_obj.time()
                 
-                print ("Guid: ",GuidTest)
+                """print ("Guid: ",GuidTest)
                 print ("Item: ",Item)
                 print ("File: ", file)
                 print ("Time: ", Timeline)
                 print ("Frame: ", Frame)
                 print ("Took: ", TookTime)
                 print ("Log: ",InfoLog)
-                print ("")
+                print ("")"""
                 
                 #input ()
                 

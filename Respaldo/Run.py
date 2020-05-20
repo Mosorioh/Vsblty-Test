@@ -25,11 +25,7 @@ from itertools import groupby
 from reportlab.pdfgen import canvas
 from reportlab.platypus import PageBreak
 
-#///////////////////////////////////////////
-# Generamos Un GUID 
-#///////////////////////////////////////////
-IdUnico = uuid.uuid4()
-GuidTest = str(IdUnico)
+
 
 #///////////////////////////////////////////
 # Generamos Un GUID 

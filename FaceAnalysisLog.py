@@ -29,7 +29,7 @@ def FaceAnalysisLog (PathLogs, GuidTest):
         lineas_texto = archivo_texto.readlines()
 
         # Parametro de Busqueda
-        parametro = "Face Analysis Function took"
+        parametro = "[EDGE Detection] Analysis Function took"
 
         # Por cada Linea del archivos buscamos el parametro definido
         for ClientLine in lineas_texto:
@@ -38,7 +38,7 @@ def FaceAnalysisLog (PathLogs, GuidTest):
                 Item += 1
                 Timeline = ClientLine[0:19] 
 
-                posiciontook =  ClientLine.find("Face") 
+                posiciontook =  ClientLine.find("Analysis") 
                 InfoLog = ClientLine[posiciontook:-1]
                 #
                 posiciontook =  ClientLine.find("took") + 5
@@ -62,14 +62,14 @@ def FaceAnalysisLog (PathLogs, GuidTest):
                 # tomamos el tiempo de la funcion Took ya convertido
                 TookTime = date_time_obj.time()
                 
-                """print ("Guid: ",GuidTest)
+                print ("Guid: ",GuidTest)
                 print ("Item: ",Item)
                 print ("File: ", file)
                 print ("Time: ", Timeline)
                 print ("Frame: ", Frame)
                 print ("Took: ", TookTime)
                 print ("Log: ",InfoLog)
-                print ("")"""
+                print ("")
                 
                 
                 # Creamos una Lista
@@ -84,3 +84,8 @@ def FaceAnalysisLog (PathLogs, GuidTest):
 
 
 
+"""PathLogs = "C:/ProgramData/Vsblty/KingSalmon/"
+#PathLogs = "C:/Users/Mijail/Desktop/Los VM/KingSalmon-vm-1/KingSalmon/"
+GuidTest = "5214-8963231-254-2836"  
+
+FaceAnalysisLog (PathLogs, GuidTest)"""
