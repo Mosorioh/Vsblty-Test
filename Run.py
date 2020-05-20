@@ -121,10 +121,73 @@ for Element in FaceAnalysisLog:
     TotalTookFaceAnalysis.append(FaceAnalysisLog[i][5])
     i += 1
 
+################################################################################################
+#/////////////////////////////////////////////////////////////////////////////////////////////// 
+#/////////////////////////////////////////////////////////////////////////////////////////////// 
+################################################################################################
+
+from CompleteAnalysisLog import CompleteAnalysisLog
+CompleteAnalysisLog = CompleteAnalysisLog (PathLogs, GuidTest)
+
+print ("*******************************************************************")
+print ("///////////////////////////////////////////////////////////////////") 
+print(" Complete analysis took")
+print ("///////////////////////////////////////////////////////////////////")
+print ("*******************************************************************")
+i = 0
+TotalTookCompleteAnalysis = []
+for Element in CompleteAnalysisLog:
+
+    print ("Guid: ",CompleteAnalysisLog[i][0])
+    print ("Item: ",CompleteAnalysisLog[i][1])
+    print ("File: ",CompleteAnalysisLog[i][2])
+    print ("Time: ",CompleteAnalysisLog[i][3])
+    print ("Frame: ",CompleteAnalysisLog[i][4])
+    print ("Took: ",CompleteAnalysisLog[i][5])
+    print ("Faces: ",CompleteAnalysisLog[i][6])
+    print ("Log: ",CompleteAnalysisLog[i][7])
+    print("")
+
+    TotalTookCompleteAnalysis.append(CompleteAnalysisLog[i][5])
+    i += 1
+
+################################################################################################
+#/////////////////////////////////////////////////////////////////////////////////////////////// 
+#/////////////////////////////////////////////////////////////////////////////////////////////// 
+################################################################################################
+
+from PersonIdClientServiceLog import PersonIdServiceLog
+PersonIdServiceLog = PersonIdServiceLog (PathLogs, GuidTest)
+
+print ("*******************************************************************")
+print ("///////////////////////////////////////////////////////////////////") 
+print(" PersonIdClientService")
+print ("///////////////////////////////////////////////////////////////////")
+print ("*******************************************************************")
+i = 0
+TotalTookPersonIdService = []
+for Element in PersonIdServiceLog:
+
+    print ("Guid: ",PersonIdServiceLog[i][0])
+    print ("Item: ",PersonIdServiceLog[i][1])
+    print ("File: ",PersonIdServiceLog[i][2])
+    print ("Time: ",PersonIdServiceLog[i][3])
+    print ("Frame: ",PersonIdServiceLog[i][4])
+    print ("Took: ",PersonIdServiceLog[i][5])
+    print ("Log: ",PersonIdServiceLog[i][6])
+    print("")
+
+    TotalTookPersonIdService.append(PersonIdServiceLog[i][5])
+    i += 1
+
+
+
 print ("*******************************************************************")
 print ("///////////////////////////////////////////////////////////////////")
 print ("Maximo Face-Detection-Service ", max(TotalTook))
 print ("Maximo Engagement-ServiceLog  ", max(TotalTookEngagement))
+print ("Maximo Complete analysis      ", max(TotalTookCompleteAnalysis))
+print ("PersonIdClientService         ", max(TotalTookPersonIdService))
 #print ("Maximo Face-Analysis          ", max(TotalTookFaceAnalysis))
 print ("///////////////////////////////////////////////////////////////////")
 print ("*******************************************************************")
