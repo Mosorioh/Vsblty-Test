@@ -218,16 +218,59 @@ print ("*******************************************************************")
 from getFacedetection import GetFaceDetectionService
 GetFaceDetectionService = GetFaceDetectionService (GuidTest)
 
+"""for Element in GetFaceDetectionService:
+    
+    Timeline = str(Element.get('Timeline'))
+    Frame = str(Element.get('Frame'))
+    Took = str(Element.get('Took'))
+    print (Timeline)
+    print (Frame)
+    print (Took)
+    print ("")"""
+# **************************************************************
+# PDF
+# **************************************************************
+
 FilePdfName =  GuidTest + ".pdf"
 
 doc = canvas.Canvas(FilePdfName)
-
 doc.setTitle("Test")
 doc.setFont("Helvetica", 10)
 doc.drawString(270, 785, "Test Summary")
 
 
-
-
 doc.line(20,730,580,730) #Creación de una linea recta
 doc.line(20,725,580,725) #Creación de una linea recta
+doc.drawString(100, 710, "Time")
+doc.drawString(270, 710, "Frame")
+doc.drawString(470, 710, "Took")
+doc.line(20,700,580,700) #Creación de una linea recta
+doc.line(20,695,580,695) #Creación de una linea recta
+
+doc.setFont("Helvetica", 8)
+
+item = 1
+Salto = 40
+linea = 670
+for Element in GetFaceDetectionService:
+
+    while (item < 40):
+        Timeline = str(Element.get('Timeline'))
+        Frame = str(Element.get('Frame'))
+        Took = str(Element.get('Took'))
+
+        #
+        #doc.drawString(50, linea, str(Timeline))
+        doc.drawString(100, linea, Timeline)
+        doc.drawString(270, linea, Frame)
+        doc.drawString(470, linea, Took)
+        linea = linea - 15
+        item += 1
+        if (item == Salto):
+            Salto += Salto
+            doc.showPage()
+            
+
+
+
+doc.save()
