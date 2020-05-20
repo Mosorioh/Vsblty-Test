@@ -269,7 +269,9 @@ for Element in GetFaceDetectionService:
     item += 1
     if (item == Salto):
         Salto += Salto
+        linea = 670
         doc.showPage()
+
             
 
 
