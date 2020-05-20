@@ -257,10 +257,11 @@ for Element in GetFaceDetectionService:
     Timeline = str(Element.get('Timeline'))
     Frame = str(Element.get('Frame'))
     Took = str(Element.get('Took'))
+    
 
     #
     #doc.drawString(50, linea, str(Timeline))
-    doc.drawString(50, linea, item)
+    doc.drawString(50, linea, str(item))
     doc.drawString(100, linea, Timeline)
     doc.drawString(270, linea, Frame)
     doc.drawString(470, linea, Took)
