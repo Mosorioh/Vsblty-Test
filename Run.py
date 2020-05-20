@@ -254,21 +254,21 @@ Salto = 40
 linea = 670
 for Element in GetFaceDetectionService:
 
-    while (item < 40):
-        Timeline = str(Element.get('Timeline'))
-        Frame = str(Element.get('Frame'))
-        Took = str(Element.get('Took'))
+    Timeline = str(Element.get('Timeline'))
+    Frame = str(Element.get('Frame'))
+    Took = str(Element.get('Took'))
 
-        #
-        #doc.drawString(50, linea, str(Timeline))
-        doc.drawString(100, linea, Timeline)
-        doc.drawString(270, linea, Frame)
-        doc.drawString(470, linea, Took)
-        linea = linea - 15
-        item += 1
-        if (item == Salto):
-            Salto += Salto
-            doc.showPage()
+    #
+    #doc.drawString(50, linea, str(Timeline))
+    doc.drawString(50, linea, item)
+    doc.drawString(100, linea, Timeline)
+    doc.drawString(270, linea, Frame)
+    doc.drawString(470, linea, Took)
+    linea = linea - 15
+    item += 1
+    if (item == Salto):
+        Salto += Salto
+        doc.showPage()
             
 
 
