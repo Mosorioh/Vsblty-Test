@@ -29,7 +29,7 @@ def EngagementServiceLog (PathLogs, GuidTest):
         lineas_texto = archivo_texto.readlines()
 
         # Parametro de Busqueda
-        parametro = "EngagementService Analysis for frame"
+        parametro = "EngagementService Analysis took"
 
         # Por cada Linea del archivos buscamos el parametro definido
         for ClientLine in lineas_texto:
@@ -39,15 +39,16 @@ def EngagementServiceLog (PathLogs, GuidTest):
                 Timeline = ClientLine[0:19] 
 
                 posiciontook =  ClientLine.find("EngagementService") 
+                posicionfor=  ClientLine.find("for") -1
+
                 InfoLog = ClientLine[posiciontook:-1]
                 #
                 posiciontook =  ClientLine.find("took") + 5
-                took = ClientLine[posiciontook:-1] 
+                took = ClientLine[posiciontook:posicionfor] 
 
                 posicionFrame =  ClientLine.find("frame") + 6
                 
-                posiciontook2 =  ClientLine.find("took")
-                Frame = int(ClientLine[posicionFrame:posiciontook2]) 
+                Frame = int(ClientLine[posicionFrame:-1]) 
               
                 # Completamos la cadena con una fecha X ('2020-01-01 '), solo para convertir a time
                 Tookdate = '2020-01-01 ' + took
@@ -60,14 +61,14 @@ def EngagementServiceLog (PathLogs, GuidTest):
                 # tomamos el tiempo de la funcion Took ya convertido
                 TookTime = date_time_obj.time()
                 
-                """print ("Guid: ",GuidTest)
+                print ("Guid: ",GuidTest)
                 print ("Item: ",Item)
                 print ("File: ", file)
                 print ("Time: ", Timeline)
                 print ("Frame: ", Frame)
                 print ("Took: ", TookTime)
                 print ("Log: ",InfoLog)
-                print ("")"""
+                print ("")
                 
                 # Creamos una Lista
                 Took = [GuidTest, Item, file, Timeline, Frame, TookTime, InfoLog]
