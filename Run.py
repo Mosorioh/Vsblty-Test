@@ -254,6 +254,7 @@ Salto = 40
 linea = 670
 for Element in GetFaceDetectionService:
 
+    doc.setFont("Helvetica", 8)
     Timeline = str(Element.get('Timeline'))
     Frame = str(Element.get('Frame'))
     Took = str(Element.get('Took'))
