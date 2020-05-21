@@ -279,10 +279,11 @@ for Element in GetFaceDetectionService:
     doc.drawString(270, linea, Frame)
     
     if (OneSegundo != -1):
-        doc.setFillColorRGB(0,10,0)
+        doc.setFillColorRGB(92,0,0)
+        doc.setFont("Helvetica", 12)
         doc.drawString(470, linea, Took)
     else:
-        doc.setFillColorRGB(92,0,0)
+        doc.setFillColorRGB(0,0,0)
         doc.setFont("Helvetica", 8)
         doc.drawString(470, linea, Took)
         
