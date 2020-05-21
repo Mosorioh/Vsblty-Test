@@ -352,9 +352,13 @@ for Element in GetFaceDetectionServiceError:
     Frame = str(Element.get('Frame'))
     Took = str(Element.get('Took'))
 
-    print (Timeline) 
-    print (Frame) 
-    print (Took) 
+    doc.drawString(50, linea, str(item))
+    doc.drawString(100, linea, Timeline)
+    #
+    doc.setFillColorRGB(92,0,0)
+    doc.drawString(270, linea, Frame)
+    doc.setFont("Helvetica", 10)
+    doc.drawString(470, linea, Took)
     
 
 
