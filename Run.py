@@ -238,7 +238,7 @@ doc.setTitle("Test")
 doc.setFont("Helvetica", 10)
 
 doc.drawString(270, 785, "Test Summary")
-doc.drawString(250, 770, GuidTest)
+doc.drawString(200, 770, GuidTest)
 doc.drawString(230, 755, "FaceDetectionService Analysis took")
 
 
@@ -256,6 +256,8 @@ doc.setFont("Helvetica", 8)
 item = 1
 Salto = 40
 linea = 670
+GetFaceDetectionServiceError = []
+#
 for Element in GetFaceDetectionService:
 
     doc.setFont("Helvetica", 8)
@@ -294,6 +296,7 @@ for Element in GetFaceDetectionService:
         doc.drawString(270, linea, Frame)
         doc.setFont("Helvetica", 10)
         doc.drawString(470, linea, Took)
+        GetFaceDetectionServiceError.append(Element)
     else:
         doc.setFillColorRGB(0,0,0)
         doc.setFont("Helvetica", 8)
@@ -312,7 +315,7 @@ for Element in GetFaceDetectionService:
         doc.showPage()
 
         doc.drawString(270, 785, "Test Summary")
-        doc.drawString(250, 770, GuidTest)
+        doc.drawString(200, 770, GuidTest)
         doc.drawString(230, 755, "FaceDetectionService Analysis took")
 
         doc.line(20,730,580,730) #Creación de una linea recta
@@ -324,7 +327,36 @@ for Element in GetFaceDetectionService:
         doc.line(20,700,580,700) #Creación de una linea recta
         doc.line(20,695,580,695) #Creación de una linea recta
 
-            
+# //////////////////////////////////////
+# Pagina de Resumen
+doc.showPage()
+
+doc.drawString(270, 785, "Test Summary")
+doc.drawString(200, 770, GuidTest)
+doc.drawString(230, 755, "FaceDetectionService Analysis took")
+doc.drawString(215, 755, "Resumen Mayor de a un Segundo ")
+
+doc.line(20,730,580,730) #Creación de una linea recta
+doc.line(20,725,580,725) #Creación de una linea recta
+doc.drawString(45, 710, "Item")
+doc.drawString(100, 710, "Time")
+doc.drawString(270, 710, "Frame")
+doc.drawString(470, 710, "Took")   
+
+for Element in GetFaceDetectionServiceError:
+
+    doc.setFont("Helvetica", 8)
+    doc.setFillColorRGB(0,0,0)
+
+    Timeline = str(Element.get('Timeline'))
+    Frame = str(Element.get('Frame'))
+    Took = str(Element.get('Took'))
+
+    print (Timeline) 
+    print (Frame) 
+    print (Took) 
+    
+
 
 
 
