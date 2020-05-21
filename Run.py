@@ -272,7 +272,6 @@ for Element in GetFaceDetectionService:
         Salto = Salto + 40
         linea = 670
         doc.showPage()
-        time.sleep(2)
 
             
 
