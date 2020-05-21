@@ -241,6 +241,7 @@ doc.drawString(270, 785, "Test Summary")
 
 doc.line(20,730,580,730) #Creación de una linea recta
 doc.line(20,725,580,725) #Creación de una linea recta
+doc.drawString(45, 710, "Item")
 doc.drawString(100, 710, "Time")
 doc.drawString(270, 710, "Frame")
 doc.drawString(470, 710, "Took")
@@ -255,23 +256,45 @@ linea = 670
 for Element in GetFaceDetectionService:
 
     doc.setFont("Helvetica", 8)
+    doc.setFillColorRGB(0,0,0)
+
     Timeline = str(Element.get('Timeline'))
     Frame = str(Element.get('Frame'))
     Took = str(Element.get('Took'))
-    
+
+    OneSegundo = Took.find("00:00:01")
+    TwoSegundo = Took.find("00:00:02")
+    ThreeSegundo = Took.find("00:00:03")
+    FourSegundo = Took.find("00:00:04")   
 
     #
     #doc.drawString(50, linea, str(Timeline))
     doc.drawString(50, linea, str(item))
     doc.drawString(100, linea, Timeline)
-    doc.drawString(270, linea, Frame)
+    
+    if (OneSegundo > 0 or TwoSegundo > 0 or ThreeSegundo > 0 or FourSegundo > 0):
+        doc.setFillColorRGB(92,0,0)
+        doc.drawString(270, linea, Frame)
+    else:
+        doc.drawString(270, linea, Frame)
+
     doc.drawString(470, linea, Took)
     linea = linea - 15
     item += 1
     if (item == Salto):
+
         Salto = Salto + 40
         linea = 670
         doc.showPage()
+
+        doc.line(20,730,580,730) #Creación de una linea recta
+        doc.line(20,725,580,725) #Creación de una linea recta
+        doc.drawString(45, 710, "Item")
+        doc.drawString(100, 710, "Time")
+        doc.drawString(270, 710, "Frame")
+        doc.drawString(470, 710, "Took")
+        doc.line(20,700,580,700) #Creación de una linea recta
+        doc.line(20,695,580,695) #Creación de una linea recta
 
             
 
