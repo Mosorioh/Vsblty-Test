@@ -269,7 +269,7 @@ for Element in GetFaceDetectionService:
     linea = linea - 15
     item += 1
     if (item == Salto):
-        Salto = Salto + Salto
+        Salto = Salto + 40
         linea = 670
         doc.showPage()
         time.sleep(2)
