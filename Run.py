@@ -265,7 +265,12 @@ for Element in GetFaceDetectionService:
     OneSegundo = Took.find("00:00:01")
     TwoSegundo = Took.find("00:00:02")
     ThreeSegundo = Took.find("00:00:03")
-    FourSegundo = Took.find("00:00:04")   
+    FourSegundo = Took.find("00:00:04")  
+
+    print (OneSegundo) 
+    print (TwoSegundo) 
+    print (ThreeSegundo) 
+    print (FourSegundo) 
 
     #
     #doc.drawString(50, linea, str(Timeline))
