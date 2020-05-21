@@ -236,7 +236,10 @@ FilePdfName =  GuidTest + ".pdf"
 doc = canvas.Canvas(FilePdfName)
 doc.setTitle("Test")
 doc.setFont("Helvetica", 10)
+
 doc.drawString(270, 785, "Test Summary")
+doc.drawString(270, 770, "GuidTest")
+doc.drawString(270, 755, "FaceDetectionService Analysis took")
 
 
 doc.line(20,730,580,730) #Creación de una linea recta
@@ -266,11 +269,14 @@ for Element in GetFaceDetectionService:
     TwoSegundo = Took.find("00:00:02")
     ThreeSegundo = Took.find("00:00:03")
     FourSegundo = Took.find("00:00:04")  
+    FiveSegundo = Took.find("00:00:05") 
+    SixSegundo = Took.find("00:00:06") 
+    SevenSegundo = Took.find("00:00:07") 
 
-    print (OneSegundo) 
+    """print (OneSegundo) 
     print (TwoSegundo) 
     print (ThreeSegundo) 
-    print (FourSegundo) 
+    print (FourSegundo) """
 
     #
     #doc.drawString(50, linea, str(Timeline))
@@ -278,7 +284,7 @@ for Element in GetFaceDetectionService:
     doc.drawString(100, linea, Timeline)
     
     
-    if (OneSegundo != -1):
+    if (OneSegundo != -1 or TwoSegundo != -1 or ThreeSegundo != -1 or FourSegundo != -1 or FiveSegundo != -1 or SixSegundo != -1 or SevenSegundo != -1):
         doc.setFillColorRGB(92,0,0)
         doc.drawString(270, linea, Frame)
         doc.setFont("Helvetica", 10)
@@ -299,6 +305,10 @@ for Element in GetFaceDetectionService:
         Salto = Salto + 40
         linea = 670
         doc.showPage()
+
+        doc.drawString(270, 785, "Test Summary")
+        doc.drawString(270, 770, "GuidTest")
+        doc.drawString(270, 755, "FaceDetectionService Analysis took")
 
         doc.line(20,730,580,730) #Creación de una linea recta
         doc.line(20,725,580,725) #Creación de una linea recta
