@@ -104,6 +104,16 @@ for Element in EngagementServiceLog:
     print ("Log: ",EngagementServiceLog[i][6])
     print("")
 
+    from AddEngagementService import addEngagementServiceLog
+    addEngagementServiceLog (
+        EngagementServiceLog[i][0], 
+        EngagementServiceLog[i][1], 
+        EngagementServiceLog[i][2],
+        EngagementServiceLog[i][3],
+        EngagementServiceLog[i][4],
+        EngagementServiceLog[i][5],
+        EngagementServiceLog[i][6])
+
     TotalTookEngagement.append(EngagementServiceLog[i][5])
     i += 1
 
@@ -219,6 +229,10 @@ print ("*******************************************************************")
 # Funcion para Obtener la tupla de registros insertados para getFacedetection
 from getFacedetection import GetFaceDetectionService
 GetFaceDetectionService = GetFaceDetectionService (GuidTest)
+
+# Funcion para Obtener la tupla de registros insertados para EngagementService
+from getEngagementService import GetEngagementService
+GetEngagementService = GetEngagementService (GuidTest)
 
 
 ################################################################################################
@@ -403,6 +417,80 @@ doc.drawString(470, 710, "Took")
 doc.line(20,700,580,700) #Creación de una linea recta
 doc.line(20,695,580,695) #Creación de una linea recta  
 
+# //////////////////////////////////////////////////////////////////
+#  Escribir Registros en el PDF
+# //////////////////////////////////////////////////////////////////
+
+item = 1
+Salto = 40
+linea = 670
+GetEngagementServiceError = []
+
+for Element in GetEngagementService:
+
+    doc.setFont("Helvetica", 8)
+    doc.setFillColorRGB(0,0,0)
+    # Convertimos a string los valores de cada elemento en la Tupla
+    Timeline = str(Element.get('Timeline'))
+    Frame = str(Element.get('Frame'))
+    Took = str(Element.get('Took'))
+    # parametros de Busqueda y segun el valor pintar en Rojo
+    OneSegundo = Took.find("00:00:01")
+    TwoSegundo = Took.find("00:00:02")
+    ThreeSegundo = Took.find("00:00:03")
+    FourSegundo = Took.find("00:00:04")  
+    FiveSegundo = Took.find("00:00:05") 
+    SixSegundo = Took.find("00:00:06") 
+    SevenSegundo = Took.find("00:00:07") 
+    EightSegundo = Took.find("00:00:08") 
+    NineSegundo = Took.find("00:00:09") 
+    TenSegundo = Took.find("00:00:10") 
+
+    # Escribimos en el PDf las lineas
+    doc.drawString(50, linea, str(item))
+    doc.drawString(100, linea, Timeline)
+    
+    # Si el valor de mayor a un segundo variables linea 273 se pinta en rojo
+    if (OneSegundo != -1 or TwoSegundo != -1 or ThreeSegundo != -1 or FourSegundo != -1 or FiveSegundo != -1 or SixSegundo != -1 or SevenSegundo != -1 or EightSegundo != -1 or NineSegundo != -1 or TenSegundo != -1):
+        doc.setFillColorRGB(92,0,0)
+        doc.drawString(270, linea, Frame)
+        doc.setFont("Helvetica", 10)
+        doc.drawString(470, linea, Took)
+        # Elemento que entre en se guarada en la lista para pagina resumen
+        GetEngagementServiceError.append(Element)
+    else:
+        doc.setFillColorRGB(0,0,0)
+        doc.setFont("Helvetica", 8)
+        doc.drawString(270, linea, Frame)
+        doc.drawString(470, linea, Took)
+
+    # Definimos linea Siguiente en el PDF y Item    
+    linea = linea - 15
+    item += 1
+
+    # segun el Item se crea una nueva Pagina
+    if (item == Salto):
+
+        # Restablesemos los valores linea y Salto
+        Salto = Salto + 40
+        linea = 670
+
+        # New page del PDF
+        doc.showPage()
+
+        # Header Nueva Hoja del PDF
+        doc.drawString(270, 785, "Test Summary")
+        doc.drawString(200, 770, GuidTest)
+        doc.drawString(230, 755, "EngagementService Analysis took")
+
+        doc.line(20,730,580,730) #Creación de una linea recta
+        doc.line(20,725,580,725) #Creación de una linea recta
+        doc.drawString(45, 710, "Item")
+        doc.drawString(100, 710, "Time")
+        doc.drawString(270, 710, "Frame")
+        doc.drawString(470, 710, "Took")
+        doc.line(20,700,580,700) #Creación de una linea recta
+        doc.line(20,695,580,695) #Creación de una linea recta
 
 
 doc.save()
