@@ -492,5 +492,50 @@ for Element in GetEngagementService:
         doc.line(20,700,580,700) #Creación de una linea recta
         doc.line(20,695,580,695) #Creación de una linea recta
 
+# ///////////////////////////////////////////
+# Pagina de Resumen
+# ///////////////////////////////////////////
+
+# New page
+doc.showPage()
+doc.setFont("Helvetica", 10)
+
+# Header
+doc.drawString(270, 785, "Test Summary")
+doc.drawString(200, 770, GuidTest)
+doc.drawString(230, 755, "EngagementService Analysis took")
+doc.drawString(230, 740, "Resumen Mayor de a un Segundo ")
+
+doc.line(20,730,580,730) #Creación de una linea recta
+doc.line(20,725,580,725) #Creación de una linea recta
+doc.drawString(45, 710, "Item")
+doc.drawString(100, 710, "Time")
+doc.drawString(270, 710, "Frame")
+doc.drawString(470, 710, "Took") 
+doc.line(20,700,580,700) #Creación de una linea recta
+doc.line(20,695,580,695) #Creación de una linea recta  
+
+item = 1
+linea = 670
+
+# Por cada Elemento Que demoro mas de 1 segundo se pinta resumen
+for Element in GetEngagementServiceError:
+
+    doc.setFont("Helvetica", 8)
+    doc.setFillColorRGB(0,0,0)
+
+    Timeline = str(Element.get('Timeline'))
+    Frame = str(Element.get('Frame'))
+    Took = str(Element.get('Took'))
+
+    doc.drawString(50, linea, str(item))
+    doc.drawString(100, linea, Timeline)
+    #
+    doc.setFillColorRGB(92,0,0)
+    doc.drawString(270, linea, Frame)
+    doc.setFont("Helvetica", 10)
+    doc.drawString(470, linea, Took)
+    item += 1
+    linea = linea - 15
 
 doc.save()
