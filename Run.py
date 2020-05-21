@@ -277,10 +277,12 @@ for Element in GetFaceDetectionService:
     doc.drawString(50, linea, str(item))
     doc.drawString(100, linea, Timeline)
     
-    if (OneSegundo > 0 or TwoSegundo > 0 or ThreeSegundo > 0 or FourSegundo > 0):
-        doc.setFillColorRGB(92,0,0)
+    if (OneSegundo != -1):
+        doc.setFillColorRGB(0,10,0)
         doc.drawString(270, linea, Frame)
     else:
+        doc.setFillColorRGB(92,0,0)
+        doc.setFont("Helvetica", 15)
         doc.drawString(270, linea, Frame)
 
     doc.drawString(470, linea, Took)
