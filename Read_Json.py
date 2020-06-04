@@ -210,51 +210,65 @@ doc.setTitle("Test")
 doc.setFont("Helvetica", 10)
 doc.drawString(270, 785, "Test Summary")
 doc.drawString(200, 770, GuidTest)
-doc.drawString(230, 755, "FaceDetectionService Analysis took")
+doc.drawString(230, 755, "Verificacion de Archivos Json")
 
 
 doc.line(20,730,580,730) #Creación de una linea recta
 doc.line(20,725,580,725) #Creación de una linea recta
 # Files procesados
-doc.drawString(45, 710, " - Files Procesados: ")
-doc.drawString(150, 710, str(FileN))
-doc.drawString(70, 695, " - Archivos Tipo Main: ")
-doc.drawString(180, 695, str(FileMain))
-doc.drawString(70, 680, " - Archivo Tipo Multiple: ")
-doc.drawString(180, 680, str(FileMultiple))
+doc.drawString(45, 710, " - Archivos Json generados: ")
+doc.drawString(70, 695, " - Files Procesados: ")
+doc.drawString(180, 695, str(FileN))
+doc.drawString(70, 680, " - Archivos Tipo Main: ")
+doc.drawString(180, 680, str(FileMain))
+doc.drawString(70, 665, " - Archivo Tipo Multiple: ")
+doc.drawString(180, 665, str(FileMultiple))
 # Face detection
-doc.drawString(45, 665, " - Faces Detectadas: ")
-doc.drawString(150, 665, str(FaceIdDetectados))
-doc.drawString(70, 650, " - Faces Sin Demografia: ")
-doc.drawString(200, 650, str(FaceSinDemografica))
-doc.drawString(70, 635, " - Faces Con Demografia: ")
-doc.drawString(200, 635, str(FaceConDemografica))
+doc.drawString(45, 650, " - Detecciones: ")
+doc.drawString(70, 635, " - Faces Detectadas: ")
+doc.drawString(200, 635, str(FaceIdDetectados))
+doc.drawString(70, 620, " - Faces Sin Demografia: ")
+doc.drawString(200, 620, str(FaceSinDemografica))
+doc.drawString(70, 605, " - Faces Con Demografia: ")
+doc.drawString(200, 605, str(FaceConDemografica))
 # Idenbtificacion 
-doc.drawString(45, 620, " - Identificaciones: ")
-doc.drawString(70, 605, " - Total Personas Identificadas: ")
-doc.drawString(230, 605, str(PersonasIdentificadas))
-doc.drawString(70, 590, " - Total Personas No Identificadas: ")
-doc.drawString(230, 590, str(PersonasNoIdentificadas))
+doc.drawString(45, 590, " - Identificaciones: ")
+doc.drawString(70, 575, " - Total Personas Identificadas: ")
+doc.drawString(230, 575, str(PersonasIdentificadas))
+doc.drawString(70, 560, " - Total Personas No Identificadas: ")
+doc.drawString(230, 560, str(PersonasNoIdentificadas))
 # Efectividad 
-doc.drawString(45, 575, " - Efectividad: ")
-doc.drawString(70, 560, " - Detecciones Estimadas: ")
-doc.drawString(230, 560, str(FacesEstimadas))
-doc.drawString(70, 545, " - Identificaciones Estimadas: ")
-doc.drawString(230, 545, str(IdentificacionEstimada))
-doc.drawString(70, 530, " - Efectividad Detecciones:                            %")
-doc.drawString(230, 530, str(EfectividadFacesdetected))
-doc.drawString(70, 515, " - Identificaciones Estimadas:                        %")
-doc.drawString(230, 515, str(Efectividadidentidicaciones))
+doc.drawString(45, 545, " - Efectividad: ")
+doc.drawString(70, 530, " - Detecciones Estimadas: ")
+doc.drawString(230, 530, str(FacesEstimadas))
+doc.drawString(70, 515, " - Identificaciones Estimadas: ")
+doc.drawString(230, 515, str(IdentificacionEstimada))
+doc.drawString(70, 500, " - Efectividad Detecciones:                            %")
+doc.drawString(230, 500, str(EfectividadFacesdetected))
+doc.drawString(70, 485, " - Identificaciones Estimadas:                        %")
+doc.drawString(230, 485, str(Efectividadidentidicaciones))
 # Linea Division
-doc.line(20,505,580,505) #Creación de una linea recta
-doc.line(20,500,580,500) #Creación de una linea recta
+doc.line(20,470,580,470) #Creación de una linea recta
+doc.line(20,465,580,465) #Creación de una linea recta
 
 
+# Personas Identificadas
+doc.drawString(70, 450, " - Personas Identificadas: ")
+doc.drawString(100, 435, "   NAME")
+doc.drawString(250, 435, "   VECES")
 
+linea = 420
+for Element in IdentificacionesJson:
 
-# //////////////////////////////////////////////////////////////////
-#  Escribir Registros en el PDF
-# //////////////////////////////////////////////////////////////////
+    doc.setFont("Helvetica", 8)
+    doc.setFillColorRGB(0,0,0)
+
+    Person = Element[0]
+    Veces = Element[1]
+    
+    doc.drawString(100, linea, str(Person))
+    doc.drawString(270, linea, str(Veces))
+    linea = linea - 15
 
       
            
