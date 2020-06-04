@@ -26,7 +26,6 @@ from reportlab.pdfgen import canvas
 from reportlab.platypus import PageBreak
 
 
-
 #///////////////////////////////////////////
 # Generamos Un GUID 
 #///////////////////////////////////////////
@@ -44,6 +43,8 @@ PathLogs = "C:/ProgramData/Vsblty/KingSalmon/"
 from FaceDetectionLog import FaceDetectionLog
 FaceDetectionService = FaceDetectionLog (PathLogs, GuidTest)
 FaceDetectionService.reverse()
+
+
 
 print ("*******************************************************************")
 print ("///////////////////////////////////////////////////////////////////") 
